@@ -37,12 +37,12 @@ describe("teste para funcionalidades da aplicação", () => {
     })
 
     it('excluindo um elemento do nosso componente', () => {
-        cy.wait(3000)
         cy.get(`:nth-child(${quantidadeContatos + 2}) > .sc-gueYoa > .delete`).click()
+        cy.wait(3000)
         cy.request('https://fake-api-tau.vercel.app/api/contatos')
         .its('body.data')
         .should((contatos) => {
             expect(contatos.length).to.eq(quantidadeContatos)
         })
     })
-})
+})  
